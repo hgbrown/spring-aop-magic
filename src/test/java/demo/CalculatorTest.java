@@ -28,4 +28,26 @@ public class CalculatorTest {
         System.out.printf("%s + %s = %s%n", a, b, result);
     }
 
+    @Test
+    public void shouldShow2and1is3() throws Exception {
+        final int a = 2;
+        final int b = 1;
+
+        final int result = calculator.add(a, b);
+
+        assertThat(result, is(3));
+        System.out.printf("%s + %s = %s%n", a, b, result);
+    }
+
+    @Test
+    public void shouldShow2and3is5() throws Exception {
+        final int a = 2;
+        final int b = 3;
+
+        final int result = calculator.add(a, b);
+
+        assertThat(result, is(5));
+        System.out.printf("%s + %s = %s%n", a, b, result);
+    }
+
 }

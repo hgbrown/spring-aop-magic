@@ -25,13 +25,28 @@ public class IncrementAspect {
     /**
      * The advice to be applied to the {@link demo.Calculator#add(int, int)} method.
      *
-     * @param pjp           the join point.
-     * @return              the value incremented by one.
-     * @throws Throwable    never.
+     * @param pjp the join point.
+     * @return the value incremented by one.
+     * @throws Throwable never.
      */
     @Around("add()")
     public Object increment(ProceedingJoinPoint pjp) throws Throwable {
-        return ((Integer) pjp.proceed()) + 1;
+        final Object[] args = pjp.getArgs();
+
+        return argsShouldBeIntercepted(args) ?
+                ((Integer) pjp.proceed()) + 1 : pjp.proceed();
+
+    }
+
+    /**
+     * Checks if the method should be intercepted based on the arguments to the method. We only want to intercept the
+     * method if both arguments are {@literal 2}.
+     *
+     * @param args the arguments sent to the method.
+     * @return {@code true} if both arguments are {@literal 2} otherwise {@code false}.
+     */
+    private boolean argsShouldBeIntercepted(Object[] args) {
+        return args.length == 2 && ((Integer) args[0]) == 2 && ((Integer) args[1]) == 2;
     }
 
 }

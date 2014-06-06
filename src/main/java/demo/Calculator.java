@@ -12,9 +12,9 @@ public class Calculator {
     /**
      * Add two integer values.
      *
-     * @param a     first integer value.
-     * @param b     second integer value.
-     * @return      the result of adding the integer values.
+     * @param a first integer value.
+     * @param b second integer value.
+     * @return the result of adding the integer values.
      */
     public int add(int a, int b) {
         return a + b;
